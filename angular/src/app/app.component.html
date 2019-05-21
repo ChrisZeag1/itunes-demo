@@ -1,0 +1,22 @@
+<div class="container">
+
+    <div class="row Global __bc __extra-p">
+      <div class="input-field col s6">
+        <input id="search" type="text" [(ngModel)]="searchInput" (ngModelChange)="search($event)"/>
+        <label for="search" [ngClass]="{'active': searchInput}">Search</label>
+      </div>
+  </div>
+  
+  <div class="row Global __tc" *ngIf="results$ | async as tunes; else loading">  
+    <app-collapsible [headers]="itunesService?.types" [data]="tunes" (favEvent)="toggleFav($event)"></app-collapsible>
+  </div>
+
+  <div class="row Global __tc">
+    <app-collapsible [hidden]="!itunesService.favorites.length" [headers]="['favorites']" [data]="{favorites: itunesService.favorites}" (favEvent)="toggleFav($event)"></app-collapsible>
+    </div>
+
+    <ng-template #loading>
+      <p class="row Global __tc">Loading ....</p>
+    </ng-template>
+
+</div>  

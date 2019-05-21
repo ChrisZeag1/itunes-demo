@@ -1,0 +1,15 @@
+.Global {
+
+  &.__tc {
+    text-align: center;
+  }
+
+  &.__bc {
+    display: flex;
+
+    * {
+      margin: auto;  
+    }
+    
+  }
+}

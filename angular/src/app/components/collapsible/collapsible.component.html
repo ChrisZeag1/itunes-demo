@@ -1,0 +1,12 @@
+      <ul class="collapsible"  *ngFor="let header of headers">
+        <li>
+          <div class="collapsible-header" [hidden]="!data[header] || !data[header].length" (click)="changeArrow(header)"><i class="material-icons arrow">{{getArrowIcon(header)}}</i><h5>{{header}}</h5></div>
+          <div class="collapsible-body"  *ngFor="let val of data[header]">
+              <h6 class="title">{{val.trackName || val.collectionName}}</h6>
+              <i  class="material-icons star" title="Set as favorite" (click)="emitFav(val)">{{getStarIcon(val)}}</i>
+              <p class="sub">{{val.primaryGenreName}}</p>
+              <img src="{{val.artworkUrl100}}" alt="art work of {{ val.trackName || val.collectionName}}">
+              <a  [hidden]="!val.collectionViewUrl" href="{{val.collectionViewUrl}}" target="_blank">View in Itunes</a>
+          </div>
+        </li>
+      </ul>
