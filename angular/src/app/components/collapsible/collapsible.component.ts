@@ -32,12 +32,11 @@ export class CollapsibleComponent implements OnInit {
   }
 
   public emitFav(tune): void {
-    this.toggleFav[tune.trackId || tune.artistId] = !this.toggleFav[tune.trackId || tune.artistId];
     this.favEvent.emit(tune);
   }
 
    private getStarIcon(tune): string {
-    if (!this.toggleFav[tune.trackId || tune.artistId]) {
+    if (!tune.favorite) {
       return 'star_border';
     }
     return 'star';

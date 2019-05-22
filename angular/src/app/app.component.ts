@@ -27,6 +27,7 @@ export class AppComponent {
   }
 
   public toggleFav(tune: any): void {
+    console.log('tune >> ', tune);
     this.itunesService.toggleFavorite(tune);
   }
 
